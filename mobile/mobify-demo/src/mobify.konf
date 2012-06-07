@@ -1,0 +1,73 @@
+{>"/base/lib/base_konf.konf"/}
+{<konf} {
+ 
+ 
+// Extract logo and site navigation for use in home.tmpl
+'header': {
+    'logo': function(context) {
+        return $('#logo a');
+    },
+    'navigation': function(context) {
+        return $('#menu');
+    },
+},
+ 
+ 
+// Extract page content for use in home.tmpl
+'content': function(context) {
+    return context.choose(
+        {                   
+            'templateName': 'home',
+            '!mainTitle': function(context) {
+                return $('.homepage #splash h1')
+            },
+            'mainImage': function(context) {
+                return $('.homepage #splash ul#gallery li:nth-child(2) img')
+            },
+            'mainSubTitle': function(context) {
+                return $('.homepage #page #content h2')
+            },
+            'mainCopy': function(context) {
+                return $('.homepage #page #content p')
+            },
+            'mainList': function(context) {
+                return $('.homepage #page #content ul')
+            },
+        },
+        { 
+            'templateName': 'common',
+            '!common': function(context) {
+                return $('.common')
+            },
+            'aboutTitle': function(context) {
+                return $('.common #page #content h2')
+            },
+            'aboutCopy': function(context) {
+                return $('.common #page #content p')
+            },
+
+        }
+    )
+},
+ 
+ 
+// Remove all desktop site scripts (optional)
+'script': function(context) {
+    return $('script').remove() 
+},
+ 
+ 
+// Remove all desktop site style (optional)
+'stylesheet': function(context) {
+    return $('link[rel="stylesheet"]').remove() 
+},
+ 
+ 
+// Important: place nothing after OUTPUTHTML
+'OUTPUTHTML': function(context) {
+    var templateName = context.data('content.templateName')
+    if (templateName) {
+        return context.tmpl(templateName);
+    }
+}
+} {/konf}

@@ -1,0 +1,12 @@
+<footer>
+    {%script}
+    (function($) {
+
+        $("nav").on('click', function() {
+            $(this).toggleClass("active");
+            $("#menu ul").toggle();
+        });
+
+    })(Mobify.$);
+    {/script}
+</footer>

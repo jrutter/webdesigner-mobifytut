@@ -1,0 +1,19 @@
+{! This template includes base.tmpl, and overrides the content block defined inside of it. !}
+{>base/}
+{<content}
+ 
+    <section class="x-content">
+        <h1>{content.mainTitle}</h1>
+
+        <div class="main-image">
+        	{content.mainImage}
+        </div>
+
+        <h2>
+        	{content.mainSubTitle}
+        </h2>
+        {content.mainCopy}
+        {content.mainList}
+    </section>
+ 
+{/content}

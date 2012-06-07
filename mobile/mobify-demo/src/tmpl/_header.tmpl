@@ -1,0 +1,15 @@
+{! This is a header file, which gets included inside of base.tmpl, so that every template which includes base
+   will also include this header. !}
+<header>
+    <div class="logo">
+        Web Designer Mobify Demo
+    </div>
+    <a href="http://www.onerutter.com/mobifydemo/index.php" class="home">
+        <div>Home</div>
+    </a>
+    <nav id="navigation"><div></div></nav>
+    {#header}
+        {navigation}
+    {/header}
+
+</header>
